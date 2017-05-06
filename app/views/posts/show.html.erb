@@ -1,0 +1,35 @@
+<% if logged_in? %>
+  <p>
+    <%= link_to '[edit this post]', edit_post_path(@post), class: "pull-right" %>
+  </p>
+<% end %>
+
+<p>
+  <%= render @post.categories %>
+</p>
+
+<%= render 'shared/content_title', title: @post.title %>
+
+<p>
+  <%= link_to "url", fix_url(@post.url) %>
+</p>
+<p>
+  <%= @post.description %>
+</p>
+
+<h3>Create a Comment</h3>
+<%= form_for [@post, @comment] do |f| %>
+
+  <%= render 'shared/errors', obj: @comment %>
+
+  <div class="control-group">
+      <%= f.label :body, 'Leave a Comment' %>
+      <%= f.text_area :body, rows: 3, class: 'span4' %>
+  </div>
+  <%= f.submit "Add Comment", class: "btn btn-primary" %>
+<% end %>
+
+<h3>Comments</h3>
+<% @post.comments.each do |comment| %>
+  <%= render 'comments/comment', comment: comment %>
+<% end %> 

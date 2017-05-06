@@ -1,0 +1,19 @@
+<div class="row">
+  <div class="span8 well">
+    <%= render post.categories %>
+    <h2><%= link_to post.title, post_path(post) %></h2>
+    <p><%= post.description %></p>
+    <% if logged_in? %>
+      <p><%= link_to "edit", edit_post_path(post) %></p>
+    <% end %>
+    <% if post.creator %>
+      <p>
+        <span class="quiet">posted by</span> <%= link_to post.creator.username, user_path(post.creator) %>
+        <small>at <time datetime="<%= display_datetime(post.created_at) %>"><%= display_datetime(post.created_at) %></time></small>
+      </p>
+    <% end %>
+    <span>
+      <%= link_to("#{post.comments.length} comments", post_path(post)) %>
+    </span>
+  </div>
+</div>
