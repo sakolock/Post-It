@@ -9,6 +9,8 @@ class Post < ActiveRecord::Base
   validates :description, presence: true
   validates :url, presence: true
 
+  before_save :generate_slug
+
   def total_votes
     up_votes - down_votes
   end
@@ -19,5 +21,17 @@ class Post < ActiveRecord::Base
 
   def down_votes
     self.votes.where(vote: false).length
+  end
+
+  def generate_slug
+    str = self.title
+    str.strip
+    str.gsub!(/[^A-Z0-9]/i, '-')
+    str.gsub!('-+', '-')
+    self.slug = str.downcase
+  end
+
+  def to_param
+    self.slug
   end
 end
