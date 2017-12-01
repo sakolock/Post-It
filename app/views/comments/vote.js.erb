@@ -1,5 +1,8 @@
+var errorTemplate = "<div class='alert alert-error'><p>You can only vote once per comment.</p></div>"
+
 <% if @vote.valid? %>
   $('#comment_<%= @comment.id %>_votes').html('<%= @comment.total_votes %> votes');
 <% else %>
-  alert("You can only vote for a comment once!");
+  $('.alert').remove();
+  $('#comment_<%= @comment.id %>_votes').closest('.row').prepend(errorTemplate);
 <% end %>
