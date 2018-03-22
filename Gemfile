@@ -15,6 +15,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt-ruby'
 gem 'voteable_sk'
 gem 'twilio-ruby'
+gem 'loofah', '~> 2.2.1'
+gem 'nokogiri', '~> 1.8.1'
 
 group :doc do
   gem 'sdoc', require: false
