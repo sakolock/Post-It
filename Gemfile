@@ -17,6 +17,7 @@ gem 'voteable_sk'
 gem 'twilio-ruby'
 gem 'loofah', '~> 2.2.1'
 gem 'nokogiri', '~> 1.8.1'
+gem 'rails-html-sanitizer', '~> 1.0.4'
 
 group :doc do
   gem 'sdoc', require: false
